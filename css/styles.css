@@ -1,0 +1,74 @@
+@font-face {
+	font-family:'Guardian Agate Sans';
+	src:url('http://s3.amazonaws.com/gdn-cdn/fonts/ascii/Guardian Ag Sans 1 Web-Reg.eot');
+	src:url('http://s3.amazonaws.com/gdn-cdn/fonts/ascii/Guardian+Ag+Sans+1+Web-Reg.eot?#iefix') format('embedded-opentype'),url('http://s3.amazonaws.com/gdn-cdn/fonts/ascii/Guardian+Ag+Sans+1+Web-Reg.woff') format('woff'),url('http://s3.amazonaws.com/gdn-cdn/fonts/ascii/Guardian+Ag+Sans+1+Web-Reg.ttf') format('truetype'),url('http://s3.amazonaws.com/gdn-cdn/fonts/ascii/Guardian+Ag+Sans+1+Web-Reg.svg#Guardian+Text+Egyp+Web-Reg') format('svg');
+	font-weight:400;
+	font-style:normal;
+	font-stretch:normal;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.container{
+	font-size: 14px;
+	width:100%;
+	height: 135px;
+	font-family: 'Guardian Agate Sans', Georgia, serif;
+	background-color: rgba(249,249,247,0.9);
+	border-top: 1px solid #929497;
+	border-bottom: 1px solid #929497;
+}
+
+.input {
+	width: 100%;
+	height: 50px;
+	display: block;
+	clear: both;
+}
+
+.question {
+	float: right;
+	width: 75%;
+	height: 80px;
+	margin: 0 0 0.5em 0;
+}
+
+.verdict {
+	border-right:1px dotted #676767;
+	display: block;
+	width: 20%;
+	height: 80px;
+	color: black;
+	float: left;
+	color: #194377;
+	font-size: 1.8em;
+	margin: 0 5% 0.5em 0;
+	text-align: center;
+}
+
+.salary {
+	width: 70%;
+	float: left;
+	height: 25px;
+}
+
+.salary:focus {
+	border:1px solid #194377;
+}
+
+.submit {
+	padding: 5px; 
+	background: #194377; 
+	font-family: "Guardian Agate Sans", Arial, sans-serif;
+	font-weight: bold;
+	color: #FFFFFF;
+	float: left;
+	border: 0 none;
+    cursor: pointer;
+    width: 20%;
+    height: 25px;
+    margin: 10px ;
+}
