@@ -25,6 +25,9 @@ $(function() {
     var newAmount = calculateTaxation(yearlySalary, taxationSystemCurrent);
     var taxationChangeString;
 
+    $('.verdict p:first').html('Tax last year: £' + oldAmount);
+    $('.verdict p:last').html('Tax this year: £' + newAmount);
+
     if (oldAmount > newAmount)
        taxationChangeString = ('£' + (oldAmount - newAmount)) + ' better off';
     if (oldAmount < newAmount)
@@ -32,7 +35,7 @@ $(function() {
     if (oldAmount === newAmount)
       taxationChangeString = 'No change';
 
-    $('.verdict').html(taxationChangeString);
+    // $('.verdict p:first').html(taxationChangeString);
   });
 
   function calculateTaxation(yearlySalary, taxationSystem){
