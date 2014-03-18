@@ -57,20 +57,18 @@ $(function() {
     var thirdBandTaxLiability = 0;
     var fourthBandTaxLiability = 0;
 
-    // CALCULATE SECOND BAND LIABILITY
-    if (taxableSalary > taxationSystem[0]['taxThreshold']) {
 
+    // CALCULATE SECOND BAND LIABILITY
+    if (taxableSalary > 0) {
       if (taxableSalary > taxationSystem[1]['taxThreshold']) {
         secondBandTaxLiability = (taxationSystem[1]['taxThreshold']) * taxationSystem[1]['pc'];
       } else {
         secondBandTaxLiability = taxableSalary * taxationSystem[1]['pc'];
       }
-
     }
 
     // CALCULATE THIRD BAND LIABILITY
-    if (taxableSalary > taxationSystem[2]['taxThreshold']) {
-
+    if (taxableSalary > taxationSystem[1]['taxThreshold']) {
       if (taxableSalary > taxationSystem[3]['taxThreshold']) {
         thirdBandTaxLiability = (taxationSystem[2]['taxThreshold']) * taxationSystem[2]['pc'];
       } else {
