@@ -18,6 +18,12 @@ $(function() {
 
   $('.salary').autoNumeric('init', {'aSep': ',', 'aSign': '£', 'vMin': '0'});
 
+  $(document).keypress(function(e) {
+      if (e.which === 13) {
+        $('.submit').trigger('click');
+      }
+  });
+
   $('.submit').click(function(e) {
     e.preventDefault();
     var yearlySalary = parseInt($('.salary').autoNumeric('get'), 10);

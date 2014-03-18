@@ -49,6 +49,10 @@ body {
 	text-align: center;
 }
 
+.verdict p {
+	margin: 14px 0 0 0;
+}
+
 .salary {
 	width: 70%;
 	float: left;
