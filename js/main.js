@@ -4,16 +4,16 @@ $(function() {
 
   var taxationSystemFormer = [
     {'name': 'PersonalAllowance', 'taxThreshold': 10000, 'pc': 0},
-    {'name': 'BasicRate', 'taxThreshold': 20000, 'pc': 0.25},
+    {'name': 'BasicRate', 'taxThreshold': 30000, 'pc': 0.25},
     {'name': 'HigherRate', 'taxThreshold': 40000, 'pc': 0.4},
     {'name': 'AdditonalRate', 'taxThreshold': 150000, 'pc': 0.5}
   ];
 
   var taxationSystemCurrent = [
     {'name': 'NewPersonalAllowance', 'taxThreshold': 10000, 'pc':0},
-    {'name': 'NewBasicRate', 'taxThreshold':39000, 'pc':0.25},
-    {'name': 'NewHigherRate', 'taxThreshold':47000, 'pc':0.4},
-    {'name': 'NewAdditonalRate', 'taxThreshold':160000, 'pc':0.5}
+    {'name': 'NewBasicRate', 'taxThreshold':30000, 'pc':0.25},
+    {'name': 'NewHigherRate', 'taxThreshold':40000, 'pc':0.4},
+    {'name': 'NewAdditonalRate', 'taxThreshold':150000, 'pc':0.5}
   ];
 
   $('.salary').autoNumeric('init', {'aSep': ',', 'aSign': '£', 'vMin': '0'});
@@ -35,10 +35,9 @@ $(function() {
     if (oldAmount === newAmount)
       taxationChangeString = 'No change';
 
-    // $('.verdict p:first').html(taxationChangeString);
   });
 
-  function calculateTaxation(yearlySalary, taxationSystem){
+  function calculateTaxation(yearlySalary, taxationSystem) {
     var taxableSalary;
     var taxLiability = 0;
 
@@ -53,25 +52,43 @@ $(function() {
       }
     }
 
-    console.log(taxableSalary);
+    var firstBandTaxLiability = 0;
+    var secondBandTaxLiability = 0;
+    var thirdBandTaxLiability = 0;
+    var fourthBandTaxLiability = 0;
 
-    if (taxableSalary - taxationSystem[3]['taxThreshold'] > 0) {
-      console.log('tax needs to be payed at top rate');
-      taxLiability += ((taxableSalary - taxationSystem[3]['taxThreshold']) * taxationSystem[3]['pc']);
-      taxableSalary = taxationSystem[3]['taxThreshold'];
-      console.log('FIRST: tax liability: ' + taxLiability);
+    // CALCULATE SECOND BAND LIABILITY
+    if (taxableSalary > taxationSystem[0]['taxThreshold']) {
+
+      if (taxableSalary > taxationSystem[1]['taxThreshold']) {
+        secondBandTaxLiability = (taxationSystem[1]['taxThreshold']) * taxationSystem[1]['pc'];
+      } else {
+        secondBandTaxLiability = taxableSalary * taxationSystem[1]['pc'];
+      }
+
     }
 
-    if ((taxableSalary - taxationSystem[2]['taxThreshold']) >= 0) {
-      console.log('TAX NEEDED AT MIDDLE RATE');
-      taxableSalary = (taxableSalary - taxationSystem[2]['taxThreshold']);
-      taxLiability += (taxableSalary * taxationSystem[2]['pc']);
-      console.log('SECOND: ' + taxLiability);
+    // CALCULATE THIRD BAND LIABILITY
+    if (taxableSalary > taxationSystem[2]['taxThreshold']) {
+
+      if (taxableSalary > taxationSystem[3]['taxThreshold']) {
+        thirdBandTaxLiability = (taxationSystem[2]['taxThreshold']) * taxationSystem[2]['pc'];
+      } else {
+        thirdBandTaxLiability = (taxableSalary - taxationSystem[1]['taxThreshold']) * taxationSystem[2]['pc'];
+      }
     }
 
-    taxLiability += taxationSystem[1]['taxThreshold'] * taxationSystem[1]['pc'];
+    // CALCULATE FOURTH BAND LIABILITY
+    if (taxableSalary > taxationSystem[3]['taxThreshold']) {
+      fourthBandTaxLiability = (taxableSalary - taxationSystem[3]['taxThreshold']) * taxationSystem[3]['pc'];
+    }
 
-    console.log('FINAL tax liability is ' + taxLiability);
+    console.log('FIRST BAND LIABILITY: ' + firstBandTaxLiability);
+    console.log('SECOND BAND LIABILITY: ' + secondBandTaxLiability);
+    console.log('THIRD BAND LIABILITY: ' + thirdBandTaxLiability);
+    console.log('FOURTH BAND LIABILITY: ' + fourthBandTaxLiability);
+
+    taxLiability = firstBandTaxLiability + secondBandTaxLiability + thirdBandTaxLiability + fourthBandTaxLiability;
 
     return taxLiability;
   }
