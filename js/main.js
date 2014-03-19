@@ -32,7 +32,7 @@ $(function() {
     var taxationChangeString;
 
     $('.verdict p:first').html('Tax take 13/14: £' + oldAmount);
-    $('.verdict p:last').html('Tax this 14/15: £' + newAmount);
+    $('.verdict p:last').html('Tax take 14/15: £' + newAmount);
 
     if (oldAmount > newAmount)
        taxationChangeString = ('£' + (oldAmount - newAmount)) + ' better off';
