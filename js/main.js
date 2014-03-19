@@ -3,17 +3,17 @@ $(function() {
   'use strict';
 
   var taxationSystemFormer = [
-    {'name': 'PersonalAllowance', 'taxThreshold': 10000, 'pc': 0},
-    {'name': 'BasicRate', 'taxThreshold': 30000, 'pc': 0.25},
-    {'name': 'HigherRate', 'taxThreshold': 40000, 'pc': 0.4},
-    {'name': 'AdditonalRate', 'taxThreshold': 150000, 'pc': 0.5}
+    {'name': 'PersonalAllowance', 'taxThreshold': 9440, 'pc': 0},
+    {'name': 'BasicRate', 'taxThreshold': 32010, 'pc': 0.20},
+    {'name': 'HigherRate', 'taxThreshold': 150000, 'pc': 0.4},
+    {'name': 'AdditonalRate', 'taxThreshold': 10000000, 'pc': 0.45}
   ];
 
   var taxationSystemCurrent = [
     {'name': 'NewPersonalAllowance', 'taxThreshold': 10000, 'pc':0},
-    {'name': 'NewBasicRate', 'taxThreshold':30000, 'pc':0.25},
-    {'name': 'NewHigherRate', 'taxThreshold':40000, 'pc':0.4},
-    {'name': 'NewAdditonalRate', 'taxThreshold':150000, 'pc':0.5}
+    {'name': 'NewBasicRate', 'taxThreshold':31865, 'pc':0.20},
+    {'name': 'NewHigherRate', 'taxThreshold':150000, 'pc':0.4},
+    {'name': 'NewAdditonalRate', 'taxThreshold':10000000, 'pc':0.45}
   ];
 
   $('.salary').autoNumeric('init', {'aSep': ',', 'aSign': '£', 'vMin': '0'});
@@ -25,8 +25,8 @@ $(function() {
     var newAmount = calculateTaxation(yearlySalary, taxationSystemCurrent);
     var taxationChangeString;
 
-    $('.verdict p:first').html('Tax last year: £' + oldAmount);
-    $('.verdict p:last').html('Tax this year: £' + newAmount);
+    $('.verdict p:first').html('Tax take 13/14: £' + oldAmount);
+    $('.verdict p:last').html('Tax this 14/15: £' + newAmount);
 
     if (oldAmount > newAmount)
        taxationChangeString = ('£' + (oldAmount - newAmount)) + ' better off';
