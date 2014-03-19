@@ -31,15 +31,19 @@ body {
 
 .question {
 	float: right;
-	width: 75%;
+	width: 45%;
 	height: 80px;
 	margin: 0 0 0.5em 0;
+}
+
+.question p {
+	line-height: 16px;
 }
 
 .verdict {
 	border-right:1px dotted #676767;
 	display: block;
-	width: 20%;
+	width: 50%;
 	height: 80px;
 	color: black;
 	float: left;
