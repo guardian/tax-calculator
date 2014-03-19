@@ -63,7 +63,6 @@ $(function() {
     var thirdBandTaxLiability = 0;
     var fourthBandTaxLiability = 0;
 
-
     // CALCULATE SECOND BAND LIABILITY
     if (taxableSalary > 0) {
       if (taxableSalary > taxationSystem[1]['taxThreshold']) {
@@ -87,10 +86,10 @@ $(function() {
       fourthBandTaxLiability = (taxableSalary - taxationSystem[3]['taxThreshold']) * taxationSystem[3]['pc'];
     }
 
-    console.log('FIRST BAND LIABILITY: ' + firstBandTaxLiability);
-    console.log('SECOND BAND LIABILITY: ' + secondBandTaxLiability);
-    console.log('THIRD BAND LIABILITY: ' + thirdBandTaxLiability);
-    console.log('FOURTH BAND LIABILITY: ' + fourthBandTaxLiability);
+    // console.log('FIRST BAND LIABILITY: ' + firstBandTaxLiability);
+    // console.log('SECOND BAND LIABILITY: ' + secondBandTaxLiability);
+    // console.log('THIRD BAND LIABILITY: ' + thirdBandTaxLiability);
+    // console.log('FOURTH BAND LIABILITY: ' + fourthBandTaxLiability);
 
     taxLiability = firstBandTaxLiability + secondBandTaxLiability + thirdBandTaxLiability + fourthBandTaxLiability;
 
